@@ -259,7 +259,7 @@ $handlebars->registerHelper(string $name, function $helper);
  - `string $name` - the name of the helper
  - `function $helper` - the helper handler
 
-Returns `Eden\Handlebrs\Index`
+Returns `Handlebrs\Index`
 
 #### Example
 
@@ -286,7 +286,7 @@ $handlebars->registerPartial(string $name, string $partial);
  - `string $name` - the name of the helper
  - `string $partial` - the helper handler
 
-Returns `Eden\Handlebrs\Index`
+Returns `Handlebrs\Index`
 
 #### Example
 
@@ -312,7 +312,7 @@ $handlebars->setCache(string $path);
 
  - `string $path` - The cache path
 
-Returns `Eden\Handlebrs\Index`
+Returns `Handlebrs\Index`
 
 #### Example
 
@@ -338,7 +338,7 @@ $handlebars->setPrefix(string $prefix);
 
  - `string $prefix` - Custom prefix name
 
-Returns `Eden\Handlebrs\Index`
+Returns `Handlebrs\Index`
 
 #### Example
 
@@ -364,7 +364,7 @@ $handlebars->unregisterHelper(string $name);
 
  - `string $name` - the helper name
 
-Returns `Eden\Handlebars\Index`
+Returns `Handlebars\Index`
 
 #### Example
 
@@ -390,7 +390,7 @@ $handlebars->unregisterPartial(string $name);
 
  - `string $name` - the partial name
 
-Returns `Eden\Handlebars\Index`
+Returns `Handlebars\Index`
 
 #### Example
 
