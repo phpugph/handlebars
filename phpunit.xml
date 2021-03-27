@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false"
+         bootstrap="test/bootstrap.php"
+>
+  <testsuites>
+    <testsuite name="Handlebars Test Suite">
+      <file>test/HandlebarsCompiler.php</file>
+      <file>test/HandlebarsData.php</file>
+      <file>test/HandlebarsException.php</file>
+      <file>test/HandlebarsHandler.php</file>
+      <file>test/HandlebarsRuntime.php</file>
+      <file>test/HandlebarsTokenizer.php</file>
+    </testsuite>
+  </testsuites>
+
+  <filter>
+    <whitelist>
+      <directory suffix=".php">./src</directory>
+      <exclude>
+        <directory>./vendor</directory>
+        <directory>./test</directory>
+        <file>src/helpers.php</file>
+      </exclude>
+    </whitelist>
+  </filter>
+</phpunit>

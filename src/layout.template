@@ -1,0 +1,14 @@
+<?php //-->
+use \Handlebars\HandlebarsData as Data;
+use \Handlebars\HandlebarsRuntime as Runtime;
+
+return function($data = array()) {
+  $noop = function() {};
+  $context = $data = Data::i($data);
+  $helper = Runtime::getHelpers($data);
+	
+  $buffer = ''; 
+%s
+
+  return $buffer;
+};
