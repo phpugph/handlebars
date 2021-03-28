@@ -248,8 +248,7 @@ class HandlebarsTokenizer
       $close = $close . $this->bars[1];
     }
 
-    for (; substr($this->source, $i, strlen($close)) !== $close;
-    $i++) {
+    for (; substr($this->source, $i, strlen($close)) !== $close; $i++) {
     }
 
     return $i + strlen($close);
