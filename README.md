@@ -1,5 +1,5 @@
 # handlebars.php
-Ultra fast PHP implementation of handlebars.js
+Ultra fast PHP8 implementation of handlebars.js
 
 [![Travis CI](https://travis-ci.org/phpugph/Handlebars.svg?branch=master)](https://travis-ci.org/phpugph/handlebars)
 [![Coverage Status](https://coveralls.io/repos/github/phpugph/Handlebars/badge.svg?branch=master)](https://coveralls.io/github/phpugph/handlebars?branch=master)
