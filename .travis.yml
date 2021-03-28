@@ -1,12 +1,15 @@
 language: php
 php:
-  - 7.1
+  - 8.0
+env:
+  global:
+    - XDEBUG_MODE=coverage
 install:
-  - /home/travis/.phpenv/versions/7.1/bin/composer install
+  - /home/travis/.phpenv/versions/8.0/bin/composer install
   - phpenv rehash
 before_script:
   - mkdir -p build/logs
 script:
   - vendor/bin/phpcs
-  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+  - XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover build/logs/clover.xml
   - php vendor/bin/php-coveralls -v
