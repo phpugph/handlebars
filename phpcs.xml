@@ -1,11 +1,32 @@
 <?xml version="1.0"?>
 <ruleset name="PHP_CodeSniffer">
-    <description>The coding standard for PHP_CodeSniffer itself.</description>
+  <description>The coding standard for PHP_CodeSniffer itself.</description>
 
-    <file>src</file>
+  <file>src</file>
 
-    <arg name="report" value="full"/>
-    <arg value="np"/>
+  <arg name="report" value="full"/>
+  <arg value="np"/>
+  <arg name="tab-width" value="2"/>
 
-    <rule ref="PSR2"/>
+  <rule ref="PSR2"/>
+  <rule ref="Generic.WhiteSpace.ScopeIndent">
+    <properties>
+      <property name="indent" value="2"/>
+    </properties>
+  </rule>
+  <rule ref="Squiz.Functions.MultiLineFunctionDeclaration">
+    <properties>
+      <property name="indent" value="2" />
+    </properties>
+  </rule>
+  <rule ref="PSR2.Methods.FunctionCallSignature">
+    <properties>
+      <property name="indent" value="2" />
+    </properties>
+  </rule>
+  <rule ref="PSR2.ControlStructures.SwitchDeclaration">
+    <properties>
+      <property name="indent" value="2" />
+    </properties>
+  </rule>
 </ruleset>
