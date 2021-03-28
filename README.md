@@ -1,8 +1,8 @@
 # handlebars.php
-Ultra fast PHP implementation of handlebars.js
+Ultra fast PHP8 implementation of handlebars.js
 
-[![Travis CI](https://travis-ci.org/phpugph/Handlebars.svg?branch=master)](https://travis-ci.org/phpugph/handlebars)
-[![Coverage Status](https://coveralls.io/repos/github/phpugph/Handlebars/badge.svg?branch=master)](https://coveralls.io/github/phpugph/handlebars?branch=master)
+[![Build Status](https://travis-ci.com/phpugph/handlebars.svg?branch=main)](https://travis-ci.com/phpugph/handlebars)
+[![Coverage Status](https://coveralls.io/repos/github/phpugph/handlebars/badge.svg?branch=main)](https://coveralls.io/github/phpugph/handlebars?branch=main)
 [![Latest Stable Version](https://poser.pugx.org/phpugph/handlebars/v/stable)](https://packagist.org/packages/phpugph/handlebars)
 [![Total Downloads](https://poser.pugx.org/phpugph/handlebars/downloads)](https://packagist.org/packages/phpugph/handlebars)
 [![Latest Unstable Version](https://poser.pugx.org/phpugph/handlebars/v/unstable)](https://packagist.org/packages/phpugph/handlebars)
