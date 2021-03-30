@@ -1,7 +1,7 @@
 {
   "name": "phpugph/handlebars",
   "type": "library",
-  "description": "Ultra fast PHP implementation of handlebars.js",
+  "description": "Ultra fast PHP8 implementation of handlebars.js",
   "keywords": [
     "handlebars"
   ],
