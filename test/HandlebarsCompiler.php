@@ -97,6 +97,10 @@ class Handlebars_HandlebarsCompiler_Test extends TestCase
    */
   public function testCompile()
   {
+    HandlebarsRuntime::registerHelper('_', function($string) {
+      return $string;
+    });
+
     $actual = $this->object->compile();
     $this->assertEquals(trim($this->template1), trim($actual));
 

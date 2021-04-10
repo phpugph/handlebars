@@ -38,7 +38,16 @@ return function($data = array()) {
 
   $buffer .= ' clearfix">'."\n";
   $buffer .= '    <label class="control-label">';
-  $buffer .= htmlspecialchars($data->find('_ \'Title\''), ENT_COMPAT, 'UTF-8');
+  $buffer .= htmlspecialchars($helper['_'](
+    'Title', 
+    array(
+      'name' => '_',
+      'args' => '_ \'Title\'',
+      'hash' => array(),
+      'fn' => $noop,
+      'inverse' => $noop
+    )
+  ), ENT_COMPAT, 'UTF-8');
 
   $buffer .= '</label>'."\n";
   $buffer .= '    <div>'."\n";
@@ -47,11 +56,20 @@ return function($data = array()) {
   $buffer .= '        class="form-control"'."\n";
   $buffer .= '        name="product_title"'."\n";
   $buffer .= '        placeholder="';
-  $buffer .= htmlspecialchars($data->find('_ \'What is the name of this product?\''), ENT_COMPAT, 'UTF-8');
+  $buffer .= htmlspecialchars($helper['_'](
+    'What is the name of this product?', 
+    array(
+      'name' => '_',
+      'args' => '_ \'What is the name of this product?\' id=\'nav-bar\'',
+      'hash' => array('id' => 'nav-bar'),
+      'fn' => $noop,
+      'inverse' => $noop
+    )
+  ), ENT_COMPAT, 'UTF-8');
 
   $buffer .= '"'."\n";
   $buffer .= '        value="';
-  $buffer .= htmlspecialchars($data->find('item.product_title'), ENT_COMPAT, 'UTF-8');
+  $buffer .= $data->find('item.product_title');
 
   $buffer .= '" />'."\n";
   $buffer .= "\n";
@@ -82,7 +100,45 @@ return function($data = array()) {
         return $buffer;
       },
 
-      'inverse' => $noop
+      'inverse' => function($context = null) use ($noop, $data, &$helper) {
+        if(is_array($context)) {
+          $data->push($context);
+        }
+
+        $buffer = '';
+        $buffer .= "\n";
+        $buffer .= '      <span class="help-text text-danger">';
+        $buffer .= $helper['noop'](
+          array(
+            'name' => 'noop',
+            'hash' => array(),
+            'fn' => function($context = null) use ($noop, $data, &$helper) {
+              if(is_array($context)) {
+                $data->push($context);
+              }
+
+              $buffer = '';
+              $buffer .= 'unknown';
+              if(is_array($context)) {
+                $data->pop();
+              }
+
+              return $buffer;
+            },
+            'inverse' => $noop
+          )
+        );
+
+        $buffer .= '</span>'."\n";
+        $buffer .= '      ';
+
+          if(is_array($context)) {
+            $data->pop();
+          }
+
+        return $buffer;
+      }
+
     )
   );
 
@@ -118,7 +174,16 @@ return function($data = array()) {
 
   $buffer .= ' clearfix">'."\n";
   $buffer .= '    <label class="control-label">';
-  $buffer .= htmlspecialchars($data->find('_ \'Detail\''), ENT_COMPAT, 'UTF-8');
+  $buffer .= htmlspecialchars($helper['_'](
+    'Detail', 
+    array(
+      'name' => '_',
+      'args' => '_ \'Detail\'',
+      'hash' => array(),
+      'fn' => $noop,
+      'inverse' => $noop
+    )
+  ), ENT_COMPAT, 'UTF-8');
 
   $buffer .= '</label>'."\n";
   $buffer .= '    <div>'."\n";
@@ -126,7 +191,16 @@ return function($data = array()) {
   $buffer .= '        class="form-control"'."\n";
   $buffer .= '        name="product_detail"'."\n";
   $buffer .= '        placeholder="';
-  $buffer .= htmlspecialchars($data->find('_ \'Enter some details about this product.\''), ENT_COMPAT, 'UTF-8');
+  $buffer .= htmlspecialchars($helper['_'](
+    'Enter some details about this product.', 
+    array(
+      'name' => '_',
+      'args' => '_ \'Enter some details about this product.\'',
+      'hash' => array(),
+      'fn' => $noop,
+      'inverse' => $noop
+    )
+  ), ENT_COMPAT, 'UTF-8');
 
   $buffer .= '">';
   $buffer .= $data->find('item.product_detail');
@@ -176,7 +250,16 @@ return function($data = array()) {
 
   $buffer .= ' clearfix">'."\n";
   $buffer .= '    <label class="control-label">';
-  $buffer .= htmlspecialchars($data->find('_ \'Brand\''), ENT_COMPAT, 'UTF-8');
+  $buffer .= htmlspecialchars($helper['_'](
+    'Brand', 
+    array(
+      'name' => '_',
+      'args' => '_ \'Brand\'',
+      'hash' => array(),
+      'fn' => $noop,
+      'inverse' => $noop
+    )
+  ), ENT_COMPAT, 'UTF-8');
 
   $buffer .= '</label>'."\n";
   $buffer .= '    <div>'."\n";
@@ -185,7 +268,16 @@ return function($data = array()) {
   $buffer .= '        class="form-control"'."\n";
   $buffer .= '        name="product_brand"'."\n";
   $buffer .= '        placeholder="';
-  $buffer .= htmlspecialchars($data->find('_ \'What brand is this?\''), ENT_COMPAT, 'UTF-8');
+  $buffer .= $helper['_'](
+    'What brand is this?', 
+    array(
+      'name' => '_',
+      'args' => '_ \'What brand is this?\' id=\'nav-bar\'',
+      'hash' => array('id' => 'nav-bar'),
+      'fn' => $noop,
+      'inverse' => $noop
+    )
+  );
 
   $buffer .= '"'."\n";
   $buffer .= '        value="';
@@ -256,7 +348,16 @@ return function($data = array()) {
 
   $buffer .= ' clearfix">'."\n";
   $buffer .= '    <label class="control-label">';
-  $buffer .= htmlspecialchars($data->find('_ \'Price\''), ENT_COMPAT, 'UTF-8');
+  $buffer .= htmlspecialchars($helper['_'](
+    'Price', 
+    array(
+      'name' => '_',
+      'args' => '_ \'Price\'',
+      'hash' => array(),
+      'fn' => $noop,
+      'inverse' => $noop
+    )
+  ), ENT_COMPAT, 'UTF-8');
 
   $buffer .= '</label>'."\n";
   $buffer .= '    <div>'."\n";
@@ -267,13 +368,51 @@ return function($data = array()) {
   $buffer .= '        min = "0"'."\n";
   $buffer .= '        step = "0.01"'."\n";
   $buffer .= '        placeholder="';
-  $buffer .= htmlspecialchars($data->find('_ \'How much do you want to sell it for?\''), ENT_COMPAT, 'UTF-8');
+  $buffer .= htmlspecialchars($helper['_'](
+    'How much do you want to sell it for?', 
+    array(
+      'name' => '_',
+      'args' => '_ \'How much do you want to sell it for?\'',
+      'hash' => array(),
+      'fn' => $noop,
+      'inverse' => $noop
+    )
+  ), ENT_COMPAT, 'UTF-8');
 
   $buffer .= '"'."\n";
-  $buffer .= '        value="';
-  $buffer .= htmlspecialchars($data->find('item.product_price'), ENT_COMPAT, 'UTF-8');
+  $buffer .= '        ';
+  $buffer .= $helper['noop'](
+    $data->find('item'), 
+    array(
+      'name' => 'noop',
+      'args' => 'noop item id=true',
+      'hash' => array('id' => true),
+      'fn' => function($context = null) use ($noop, $data, &$helper) {
+        if(is_array($context)) {
+          $data->push($context);
+        }
 
-  $buffer .= '" />'."\n";
+        $buffer = '';
+        $buffer .= "\n";
+        $buffer .= '        value="';
+        $buffer .= htmlspecialchars($data->find('product_price'), ENT_COMPAT, 'UTF-8');
+
+        $buffer .= '"'."\n";
+        $buffer .= '        ';
+
+        if(is_array($context)) {
+          $data->pop();
+        }
+
+        return $buffer;
+      },
+
+      'inverse' => $noop
+    )
+  );
+
+  $buffer .= "\n";
+  $buffer .= '      />'."\n";
   $buffer .= "\n";
   $buffer .= '      ';
   $buffer .= $helper['if'](

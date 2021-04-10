@@ -308,9 +308,11 @@ class HandlebarsCompiler
       ->setBars($this->bars)
       ->tokenize($callback);
 
+    // @codeCoverageIgnoreStart
     if (count($reference->open)) {
       throw HandlebarsException::forMissingClosing($reference->open);
     }
+    // @codeCoverageIgnoreEnd
 
     if (!$layout) {
       return $reference->buffer;
@@ -439,9 +441,11 @@ class HandlebarsCompiler
 
     //lookout for tokenizer
     $tokenized = $this->tokenize($node);
+    // @codeCoverageIgnoreStart
     if ($tokenized) {
       return $tokenized;
     }
+    // @codeCoverageIgnoreEnd
 
     list($name, $args, $hash) = $this->parseArguments($node['value']);
 
@@ -530,10 +534,11 @@ class HandlebarsCompiler
   protected function generateClose(array $node, array &$open)
   {
     $node['value'] = trim($node['value']);
-
+    // @codeCoverageIgnoreStart
     if ($this->findSection($open, $node['value']) === false) {
       throw HandlebarsException::forUnknownEnd($node['value'], $node['line']);
     }
+    // @codeCoverageIgnoreEnd
 
     $buffer = '';
 
@@ -568,6 +573,7 @@ class HandlebarsCompiler
    */
   protected function generateHelpers()
   {
+    // @codeCoverageIgnoreStart
     $helpers = $this->handlebars->getHelpers();
 
     foreach ($helpers as $name => $helper) {
@@ -594,6 +600,8 @@ class HandlebarsCompiler
       . $this->prettyPrint('\r\t')
       . implode($this->prettyPrint(',\r\t'), $helpers)
       . $this->prettyPrint(self::BLOCK_OPTIONS_CLOSE);
+
+    // @codeCoverageIgnoreEnd
   }
 
   /**
@@ -604,6 +612,7 @@ class HandlebarsCompiler
    */
   protected function generatePartials()
   {
+    // @codeCoverageIgnoreStart
     $partials = $this->handlebars->getPartials();
 
     foreach ($partials as $name => $partial) {
@@ -618,6 +627,7 @@ class HandlebarsCompiler
       . $this->prettyPrint('\r\t')
       . implode($this->prettyPrint(',\r\t'), $partials)
       . $this->prettyPrint(self::BLOCK_OPTIONS_CLOSE);
+    // @codeCoverageIgnoreEnd
   }
 
   /**
@@ -750,9 +760,11 @@ class HandlebarsCompiler
   {
     $this->offset += $before;
 
+    // @codeCoverageIgnoreStart
     if ($this->offset < 0) {
       $this->offset = 0;
     }
+    // @codeCoverageIgnoreEnd
 
     $code = str_replace(
       ['\r', '\n', '\t', '\1', '\2'],
@@ -768,9 +780,11 @@ class HandlebarsCompiler
 
     $this->offset += $after;
 
+    // @codeCoverageIgnoreStart
     if ($this->offset < 0) {
       $this->offset = 0;
     }
+    // @codeCoverageIgnoreEnd
 
     $code = str_replace('\\' . $this->bars[0], $this->bars[0], $code);
     $code = str_replace('\\' . $this->bars[1], $this->bars[1], $code);
@@ -778,9 +792,11 @@ class HandlebarsCompiler
     //''."\n"
     $code = str_replace(' \'\'."\n"', ' "\n"', $code);
 
+    // @codeCoverageIgnoreStart
     if ($code === '$buffer .= \'\';') {
       return '';
     }
+    // @codeCoverageIgnoreEnd
 
     return $code;
   }
@@ -807,7 +823,9 @@ class HandlebarsCompiler
       return $i;
     }
 
+    // @codeCoverageIgnoreStart
     return false;
+    // @codeCoverageIgnoreEnd
   }
 
   /**
