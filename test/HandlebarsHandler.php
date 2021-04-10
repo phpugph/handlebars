@@ -40,6 +40,16 @@ class Handlebars_HandlebarsHandler_Test extends TestCase
   }
 
   /**
+   * @covers Handlebars\HandlebarsHandler::__construct
+   */
+  public function test__construct()
+  {
+    $this->object = new HandlebarsHandler;
+
+    $this->assertInstanceOf(HandlebarsHandler::class, $this->object);
+  }
+
+  /**
    * @covers Handlebars\HandlebarsHandler::compile
    */
   public function testCompile()
@@ -49,10 +59,17 @@ class Handlebars_HandlebarsHandler_Test extends TestCase
     $results = $template(['foo' => '<strong>foo</strong>']);
 
     $this->assertEquals('&lt;strong&gt;foo&lt;/strong&gt;<strong>foo</strong>', $results);
+
+    $template = $this->object->compile('{{foo}}{{{foo}}}');
+
+    $results = $template(['foo' => '<strong>foo</strong>']);
+
+    $this->assertEquals('&lt;strong&gt;foo&lt;/strong&gt;<strong>foo</strong>', $results);
   }
 
   /**
    * @covers Handlebars\HandlebarsHandler::setBars
+   * @covers Handlebars\HandlebarsHandler::getBars
    */
   public function testSetBars()
   {
@@ -67,6 +84,7 @@ class Handlebars_HandlebarsHandler_Test extends TestCase
     ]);
 
     $this->assertEquals($expected, $results);
+    $this->assertEquals('[]', $this->object->getBars());
   }
 
   /**

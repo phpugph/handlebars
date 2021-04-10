@@ -53,8 +53,10 @@ class Handlebars_HandlebarsRuntime_Test extends TestCase
    */
   public function testGetHelper()
   {
+    $data = HandlebarsData::i();
     HandlebarsRuntime::registerHelper('foo', function() {});
     $this->assertInstanceOf('Closure', HandlebarsRuntime::getHelper('foo'));
+    $this->assertInstanceOf('Closure', HandlebarsRuntime::getHelper('foo', $data));
     $this->assertNull(HandlebarsRuntime::getHelper('bar'));
   }
 
@@ -64,6 +66,10 @@ class Handlebars_HandlebarsRuntime_Test extends TestCase
   public function testGetHelpers()
   {
     $helpers = HandlebarsRuntime::getHelpers();
+    $this->assertTrue(is_array($helpers));
+
+    $data = HandlebarsData::i();
+    $helpers = HandlebarsRuntime::getHelpers($data);
     $this->assertTrue(is_array($helpers));
   }
 

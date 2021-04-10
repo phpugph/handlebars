@@ -78,7 +78,7 @@ class HandlebarsHandler
     }
 
     $file = $this->cache . '/' . $this->prefix . $name . '.php';
-
+    // @codeCoverageIgnoreStart
     if (is_dir($this->cache) && file_exists($file)) {
       $callback = include($file);
     } else {
@@ -93,6 +93,7 @@ class HandlebarsHandler
       $callback = @eval('?>'.$code);
       //$this->checkEval($code);
     }
+    // @codeCoverageIgnoreEnd
 
     self::$callbacks[$name] = $callback;
 
@@ -282,6 +283,7 @@ class HandlebarsHandler
    */
   protected function checkEval($code)
   {
+    // @codeCoverageIgnoreStart
     $error = error_get_last();
 
     if (isset($error['message'])
@@ -304,5 +306,6 @@ class HandlebarsHandler
     }
 
     return $this;
+    // @codeCoverageIgnoreEnd
   }
 }

@@ -6,11 +6,13 @@
         type="text"
         class="form-control"
         name="product_title"
-        placeholder="{{_ 'What is the name of this product?'}}"
-        value="{{item.product_title}}" />
+        placeholder="{{_ 'What is the name of this product?' id='nav-bar'}}"
+        value="{{{item.product_title}}}" />
 
       {{#if errors.product_title}}
       <span class="help-text text-danger">{{errors.product_title}}</span>
+      {{else}}
+      <span class="help-text text-danger">{{> unknown}}</span>
       {{/if}}
     </div>
   </div>
@@ -36,7 +38,7 @@
         type="text"
         class="form-control"
         name="product_brand"
-        placeholder="{{_ 'What brand is this?'}}"
+        placeholder="{{{_ 'What brand is this?' id='nav-bar'}}}"
         value="{{item.product_brand}}" />
 
       {{#if errors.product_brand}}
@@ -55,7 +57,10 @@
         min = "0"
         step = "0.01"
         placeholder="{{_ 'How much do you want to sell it for?'}}"
-        value="{{item.product_price}}" />
+        {{#item id=true}}
+        value="{{product_price}}"
+        {{/item}}
+      />
 
       {{#if errors.product_price}}
       <span class="help-text text-danger">{{errors.product_price}}</span>

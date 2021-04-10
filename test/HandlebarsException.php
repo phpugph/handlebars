@@ -103,5 +103,13 @@ class Handlebars_HandlebarsException_Test extends TestCase
     $expected = "foobar on line 2 \n```\n2: Line 2\n3: Line 3\n```\n";
 
     $this->assertEquals($expected, $actual);
+
+    try {
+      throw HandlebarsException::forCompileError($error, $code, 3);
+    } catch(HandlebarsException $e) {
+      $actual = $e->getMessage();
+    }
+
+    $this->assertStringContainsString('4: Line 4', $actual);
   }
 }

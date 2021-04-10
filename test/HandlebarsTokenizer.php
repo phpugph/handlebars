@@ -54,6 +54,15 @@ class Handlebars_HandlebarsTokenizer_Test extends TestCase
   }
 
   /**
+   * @covers Handlebars\HandlebarsTokenizer::setBars
+   */
+  public function testSetBars()
+  {
+    $actual = $this->object->setBars('{}');
+    $this->assertInstanceOf(HandlebarsTokenizer::class, $actual);
+  }
+
+  /**
    * @covers Handlebars\HandlebarsTokenizer::tokenize
    * @covers Handlebars\HandlebarsTokenizer::addNode
    * @covers Handlebars\HandlebarsTokenizer::flushText
@@ -61,45 +70,13 @@ class Handlebars_HandlebarsTokenizer_Test extends TestCase
    */
   public function testTokenize()
   {
+    $actual = $this->object->tokenize();
+    $this->assertInstanceOf(HandlebarsTokenizer::class, $actual);
+
     $i = 0;
 
     //should we test for more?
-    $tests = array(
-      '<div class="product-fields">
-  <div class="form-group',
-    "if errors.product_title",
-    ' has-error',
-    "if",
-    ' clearfix">
-    <label class="control-label">',
-      "_ 'Title'",
-      '</label>
-    <div>
-      <input
-        type="text"
-        class="form-control"
-        name="product_title"
-        placeholder="',
-      "_ 'What is the name of this product?'",
-      '"
-        value="',
-      "item.product_title",
-      '" />
-
-      ',
-      "if errors.product_title",
-      '
-      <span class="help-text text-danger">',
-      "errors.product_title",
-      '</span>
-      ',
-      "if",
-      '
-    </div>
-  </div>
-
-  <div class="form-group'
-    );
+    $tests = json_decode(__DIR__.'/assets/tokenizer.json', true);
 
     $unit = $this;
 
