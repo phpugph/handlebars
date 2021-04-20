@@ -499,7 +499,7 @@ class HandlebarsCompiler
 
     if (!$helper) {
       //run noop
-      $node['value'] = 'noop '.$node['value'];
+      $node['value'] = 'noop ' . $node['value'];
       list($name, $args, $hash) = $this->parseArguments($node['value']);
     }
 
@@ -662,13 +662,15 @@ class HandlebarsCompiler
       '([a-zA-Z0-9]+\="[^"]*")',    // cat="meow"
       '([a-zA-Z0-9]+\=\'[^\']*\')',   // mouse='squeak squeak'
       '([a-zA-Z0-9]+\=[a-zA-Z0-9]+)', // dog=false
+      '([a-zA-Z0-9]+\=@[a-zA-Z0-9_]+)', // dog=@woof
+      '([a-zA-Z0-9]+\=[a-zA-Z0-9_\./]+)', // dog=./woof dog=.././woof
     ];
 
     foreach ($stringArgs as $arg) {
       //if it's an attribute
       if (!(substr($arg, 0, 1) === "'" && substr($arg, -1) === "'")
         && !(substr($arg, 0, 1) === '"' && substr($arg, -1) === '"')
-        && preg_match('#'.implode('|', $hashRegex).'#is', $arg)
+        && preg_match('#' . implode('|', $hashRegex) . '#is', $arg)
       ) {
         list($hashKey, $hashValue) = explode('=', $arg, 2);
         $hash[$hashKey] = $this->parseArgument($hashValue);
