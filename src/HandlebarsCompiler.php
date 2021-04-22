@@ -645,12 +645,13 @@ class HandlebarsCompiler
     $hash = [];
 
     $regex = [
-      '([a-zA-Z0-9]+\="[^"]*")',    // cat="meow"
-      '([a-zA-Z0-9]+\=\'[^\']*\')',   // mouse='squeak squeak'
-      '([a-zA-Z0-9]+\=[a-zA-Z0-9]+)', // dog=false
-      '("[^"]*")',          // "some\'thi ' ng"
-      '(\'[^\']*\')',         // 'some"thi " ng'
-      '([^\s]+)'            // <any group with no spaces>
+      '([a-zA-Z0-9\-_]+\="[^"]*")',          // cat="meow"
+      '([a-zA-Z0-9\-_]+\=\'[^\']*\')',       // mouse='squeak squeak'
+      '([a-zA-Z0-9\-_]+\=[a-zA-Z0-9_\./]+)', // dog=false dog=./woof dog=.././woof
+      '([a-zA-Z0-9\-_]+\=@[a-zA-Z0-9_]+)',   // dog=@woof
+      '("[^"]*")',                           // "some\'thi ' ng"
+      '(\'[^\']*\')',                        // 'some"thi " ng'
+      '([^\s]+)',                            // <any group with no spaces>
     ];
 
     preg_match_all('#'.implode('|', $regex).'#is', $string, $matches);
@@ -659,11 +660,10 @@ class HandlebarsCompiler
     $name = array_shift($stringArgs);
 
     $hashRegex = [
-      '([a-zA-Z0-9]+\="[^"]*")',    // cat="meow"
-      '([a-zA-Z0-9]+\=\'[^\']*\')',   // mouse='squeak squeak'
-      '([a-zA-Z0-9]+\=[a-zA-Z0-9]+)', // dog=false
-      '([a-zA-Z0-9]+\=@[a-zA-Z0-9_]+)', // dog=@woof
-      '([a-zA-Z0-9]+\=[a-zA-Z0-9_\./]+)', // dog=./woof dog=.././woof
+      '([a-zA-Z0-9\-_]+\="[^"]*")',          // cat="meow"
+      '([a-zA-Z0-9\-_]+\=\'[^\']*\')',       // mouse='squeak squeak'
+      '([a-zA-Z0-9\-_]+\=[a-zA-Z0-9_\./]+)', // dog=false dog=./woof dog=.././woof
+      '([a-zA-Z0-9\-_]+\=@[a-zA-Z0-9_]+)',   // dog=@woof
     ];
 
     foreach ($stringArgs as $arg) {
