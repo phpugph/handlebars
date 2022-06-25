@@ -44,7 +44,7 @@ class HandlebarsCompiler
   /**
    * @const string BLOCK_VARIABLE_VALUE
    */
-  const BLOCK_VARIABLE_VALUE = '\r\t$buffer .= htmlspecialchars($data->find(\'%s\'), ENT_COMPAT, \'UTF-8\');\r';
+  const BLOCK_VARIABLE_VALUE = '\r\t$buffer .= htmlspecialchars($data->find(\'%s\') ?? \'\', ENT_COMPAT, \'UTF-8\');\r';
 
   /**
    * @const string BLOCK_ESCAPE_HELPER_OPEN
@@ -59,7 +59,7 @@ class HandlebarsCompiler
   /**
    * @const string BLOCK_VARIABLE_HELPER_OPEN
    */
-  const BLOCK_VARIABLE_HELPER_OPEN = '\r\t$buffer .= htmlspecialchars($helper[\'%s\'](';
+  const BLOCK_VARIABLE_HELPER_OPEN = '\r\t$buffer .= htmlspecialchars((string) $helper[\'%s\'](';
 
   /**
    * @const string BLOCK_VARIABLE_HELPER_CLOSE

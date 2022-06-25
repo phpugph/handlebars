@@ -79,13 +79,13 @@ class HandlebarsHandler
 
     $file = $this->cache . '/' . $this->prefix . $name . '.php';
     // @codeCoverageIgnoreStart
-    if (is_dir((string) $this->cache) && file_exists($file)) {
+    if (is_dir($this->cache ?? '') && file_exists($file)) {
       $callback = include($file);
     } else {
       $code = $this->resolve(HandlebarsCompiler::class, $this, $template)
         ->compile();
 
-      if (is_dir((string) $this->cache)) {
+      if (is_dir($this->cache ?? '')) {
         file_put_contents($file, $code);
       }
 
