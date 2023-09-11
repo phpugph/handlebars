@@ -38,7 +38,7 @@ return function($data = array()) {
 
   $buffer .= ' clearfix">'."\n";
   $buffer .= '    <label class="control-label">';
-  $buffer .= htmlspecialchars($helper['_'](
+  $buffer .= htmlspecialchars((string) $helper['_'](
     'Title', 
     array(
       'name' => '_',
@@ -56,7 +56,7 @@ return function($data = array()) {
   $buffer .= '        class="form-control"'."\n";
   $buffer .= '        name="product_title"'."\n";
   $buffer .= '        placeholder="';
-  $buffer .= htmlspecialchars($helper['_'](
+  $buffer .= htmlspecialchars((string) $helper['_'](
     'What is the name of this product?', 
     array(
       'name' => '_',
@@ -88,7 +88,7 @@ return function($data = array()) {
         $buffer = '';
         $buffer .= "\n";
         $buffer .= '      <span class="help-text text-danger">';
-        $buffer .= htmlspecialchars($data->find('errors.product_title'), ENT_COMPAT, 'UTF-8');
+        $buffer .= htmlspecialchars($data->find('errors.product_title') ?? '', ENT_COMPAT, 'UTF-8');
 
         $buffer .= '</span>'."\n";
         $buffer .= '      ';
@@ -174,7 +174,7 @@ return function($data = array()) {
 
   $buffer .= ' clearfix">'."\n";
   $buffer .= '    <label class="control-label">';
-  $buffer .= htmlspecialchars($helper['_'](
+  $buffer .= htmlspecialchars((string) $helper['_'](
     'Detail', 
     array(
       'name' => '_',
@@ -191,7 +191,7 @@ return function($data = array()) {
   $buffer .= '        class="form-control"'."\n";
   $buffer .= '        name="product_detail"'."\n";
   $buffer .= '        placeholder="';
-  $buffer .= htmlspecialchars($helper['_'](
+  $buffer .= htmlspecialchars((string) $helper['_'](
     'Enter some details about this product.', 
     array(
       'name' => '_',
@@ -212,7 +212,7 @@ return function($data = array()) {
 
   $buffer .= "\n";
   $buffer .= '      <span class="help-text text-danger">';
-  $buffer .= htmlspecialchars($data->find('errors.product_detail'), ENT_COMPAT, 'UTF-8');
+  $buffer .= htmlspecialchars($data->find('errors.product_detail') ?? '', ENT_COMPAT, 'UTF-8');
 
   $buffer .= '</span>'."\n";
   $buffer .= '      ';
@@ -250,7 +250,7 @@ return function($data = array()) {
 
   $buffer .= ' clearfix">'."\n";
   $buffer .= '    <label class="control-label">';
-  $buffer .= htmlspecialchars($helper['_'](
+  $buffer .= htmlspecialchars((string) $helper['_'](
     'Brand', 
     array(
       'name' => '_',
@@ -281,7 +281,7 @@ return function($data = array()) {
 
   $buffer .= '"'."\n";
   $buffer .= '        value="';
-  $buffer .= htmlspecialchars($data->find('item.product_brand'), ENT_COMPAT, 'UTF-8');
+  $buffer .= htmlspecialchars($data->find('item.product_brand') ?? '', ENT_COMPAT, 'UTF-8');
 
   $buffer .= '" />'."\n";
   $buffer .= "\n";
@@ -300,7 +300,7 @@ return function($data = array()) {
         $buffer = '';
         $buffer .= "\n";
         $buffer .= '      <span class="help-text text-danger">';
-        $buffer .= htmlspecialchars($data->find('errors.product_brand'), ENT_COMPAT, 'UTF-8');
+        $buffer .= htmlspecialchars($data->find('errors.product_brand') ?? '', ENT_COMPAT, 'UTF-8');
 
         $buffer .= '</span>'."\n";
         $buffer .= '      ';
@@ -348,7 +348,7 @@ return function($data = array()) {
 
   $buffer .= ' clearfix">'."\n";
   $buffer .= '    <label class="control-label">';
-  $buffer .= htmlspecialchars($helper['_'](
+  $buffer .= htmlspecialchars((string) $helper['_'](
     'Price', 
     array(
       'name' => '_',
@@ -368,7 +368,7 @@ return function($data = array()) {
   $buffer .= '        min = "0"'."\n";
   $buffer .= '        step = "0.01"'."\n";
   $buffer .= '        placeholder="';
-  $buffer .= htmlspecialchars($helper['_'](
+  $buffer .= htmlspecialchars((string) $helper['_'](
     'How much do you want to sell it for?', 
     array(
       'name' => '_',
@@ -395,7 +395,7 @@ return function($data = array()) {
         $buffer = '';
         $buffer .= "\n";
         $buffer .= '        value="';
-        $buffer .= htmlspecialchars($data->find('product_price'), ENT_COMPAT, 'UTF-8');
+        $buffer .= htmlspecialchars($data->find('product_price') ?? '', ENT_COMPAT, 'UTF-8');
 
         $buffer .= '"'."\n";
         $buffer .= '        ';
@@ -429,7 +429,7 @@ return function($data = array()) {
         $buffer = '';
         $buffer .= "\n";
         $buffer .= '      <span class="help-text text-danger">';
-        $buffer .= htmlspecialchars($data->find('errors.product_price'), ENT_COMPAT, 'UTF-8');
+        $buffer .= htmlspecialchars($data->find('errors.product_price') ?? '', ENT_COMPAT, 'UTF-8');
 
         $buffer .= '</span>'."\n";
         $buffer .= '      ';
